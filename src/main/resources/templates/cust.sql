@@ -1,0 +1,5 @@
+CREATE TABLE "HR"."CUST"
+   (    "CUST_ID" NUMBER(10),
+        "CUST_NAME" VARCHAR2(30),
+        "CUST_PHONE" VARCHAR2(20)
+   );
