@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class CustomerController {
@@ -21,8 +22,8 @@ public class CustomerController {
     }
 
     @RequestMapping(value = "/customer", method = RequestMethod.GET)
-    public ResponseEntity<Customer> getCustomer(@RequestParam long id) {
-        return new ResponseEntity<>(null, HttpStatus.OK);
+    public ResponseEntity<Optional<Customer>> getCustomer(@RequestParam(value = "id") long id) {
+        return new ResponseEntity<>(customerService.getCustomer(id), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/customer/add", method = RequestMethod.POST)
@@ -32,12 +33,13 @@ public class CustomerController {
 
     @RequestMapping(value = "/customer/update", method = RequestMethod.PUT)
     public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer) {
-        return new ResponseEntity<>(null, HttpStatus.OK);
+        return new ResponseEntity<>(customerService.updateCustomer(customer), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/customer/delete", method = RequestMethod.DELETE)
-    public ResponseEntity<Customer> deleteCustomer(@RequestParam long id) {
-        return new ResponseEntity<>(null, HttpStatus.OK);
+    public ResponseEntity<String> deleteCustomer(@RequestParam(value = "id") long id) {
+        customerService.deleteCustomer(id);
+        return new ResponseEntity<>("Customer deleted.", HttpStatus.OK);
     }
 
 }
