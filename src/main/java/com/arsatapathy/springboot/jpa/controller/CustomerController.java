@@ -1,7 +1,7 @@
-package com.suryaprava.springboot.jpa.controller;
+package com.arsatapathy.springboot.jpa.controller;
 
-import com.suryaprava.springboot.jpa.model.Customer;
-import com.suryaprava.springboot.jpa.service.CustomerService;
+import com.arsatapathy.springboot.jpa.model.Customer;
+import com.arsatapathy.springboot.jpa.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
