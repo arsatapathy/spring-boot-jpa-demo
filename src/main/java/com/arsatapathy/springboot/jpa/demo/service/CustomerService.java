@@ -1,7 +1,7 @@
-package com.arsatapathy.springboot.jpa.service;
+package com.arsatapathy.springboot.jpa.demo.service;
 
-import com.arsatapathy.springboot.jpa.model.Customer;
-import com.arsatapathy.springboot.jpa.repo.CustomerRepo;
+import com.arsatapathy.springboot.jpa.demo.model.Customer;
+import com.arsatapathy.springboot.jpa.demo.repo.CustomerRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

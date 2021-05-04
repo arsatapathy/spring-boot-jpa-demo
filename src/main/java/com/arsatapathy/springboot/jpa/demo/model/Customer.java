@@ -1,4 +1,4 @@
-package com.arsatapathy.springboot.jpa.model;
+package com.arsatapathy.springboot.jpa.demo.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
