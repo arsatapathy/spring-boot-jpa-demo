@@ -37,7 +37,7 @@ public class CustomerController {
     }
 
     @RequestMapping(value = "/customer/delete", method = RequestMethod.DELETE)
-    public ResponseEntity<String> deleteCustomer(@RequestParam(value = "id") long id) {
+    public ResponseEntity<String> deleteCustomer(@RequestParam(value = "id") Long id) {
         customerService.deleteCustomer(id);
         return new ResponseEntity<>("Customer deleted!", HttpStatus.OK);
     }
