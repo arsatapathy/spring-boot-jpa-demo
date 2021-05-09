@@ -41,6 +41,18 @@ public class ItemService {
     }
 
     public void removeItem(Long itemId) {
+        Optional<Item> optionalItem = itemRepo.findById(itemId);
+        Item item = optionalItem.orElse(null);
+
+        assert item != null;
+        Optional<Purchase> optionalPurchase = purchaseRepo.findById(item.getPurchase().getPurchaseId());
+
+        Purchase purchase = optionalPurchase.orElse(null);
+        assert purchase != null;
+        purchase.setPurchaseTotal(purchase.getPurchaseTotal() - item.getItemPrice());
+
+        purchaseRepo.save(purchase);
+
         itemRepo.deleteById(itemId);
     }
 
