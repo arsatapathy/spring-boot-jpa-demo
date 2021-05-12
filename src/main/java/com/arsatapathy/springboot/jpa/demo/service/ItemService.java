@@ -29,30 +29,10 @@ public class ItemService {
     }
 
     public Item addItem(Item item) {
-        Optional<Purchase> optionalPurchase = purchaseRepo.findById(item.getPurchase().getPurchaseId());
-
-        Purchase purchase = optionalPurchase.orElse(null);
-        assert purchase != null;
-        purchase.setPurchaseTotal(purchase.getPurchaseTotal() + item.getItemPrice());
-
-        purchaseRepo.save(purchase);
-
         return itemRepo.save(item);
     }
 
     public void removeItem(Long itemId) {
-        Optional<Item> optionalItem = itemRepo.findById(itemId);
-        Item item = optionalItem.orElse(null);
-
-        assert item != null;
-        Optional<Purchase> optionalPurchase = purchaseRepo.findById(item.getPurchase().getPurchaseId());
-
-        Purchase purchase = optionalPurchase.orElse(null);
-        assert purchase != null;
-        purchase.setPurchaseTotal(purchase.getPurchaseTotal() - item.getItemPrice());
-
-        purchaseRepo.save(purchase);
-
         itemRepo.deleteById(itemId);
     }
 

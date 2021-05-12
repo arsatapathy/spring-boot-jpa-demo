@@ -3,6 +3,7 @@ package com.arsatapathy.springboot.jpa.demo.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "ITEM")
@@ -17,10 +18,9 @@ public class Item {
     @Column(name = "ITEM_PRICE")
     private Double itemPrice;
 
-    @ManyToOne
-    @JoinColumn(name = "PURCHASE_ID")
+    @ManyToMany(mappedBy = "items")
     @JsonBackReference
-    private Purchase purchase;
+    private List<Purchase> purchases;
 
     public Long getItemId() {
         return itemId;
@@ -46,12 +46,12 @@ public class Item {
         this.itemPrice = itemPrice;
     }
 
-    public Purchase getPurchase() {
-        return purchase;
+    public List<Purchase> getPurchases() {
+        return purchases;
     }
 
-    public void setPurchase(Purchase purchase) {
-        this.purchase = purchase;
+    public void setPurchases(List<Purchase> purchases) {
+        this.purchases = purchases;
     }
 
     @Override
@@ -60,7 +60,6 @@ public class Item {
                 "itemId=" + itemId +
                 ", itemName='" + itemName + '\'' +
                 ", itemPrice=" + itemPrice +
-                ", purchase=" + purchase +
                 '}';
     }
 }

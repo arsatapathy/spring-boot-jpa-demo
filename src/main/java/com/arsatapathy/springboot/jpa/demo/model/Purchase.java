@@ -21,8 +21,12 @@ public class Purchase {
     @JsonBackReference
     private Customer customer;
 
-    @OneToMany(mappedBy = "purchase", cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "PURCHASE_ITEMS",
+            joinColumns = {@JoinColumn(name = "PURCHASE_ID")},
+            inverseJoinColumns = {@JoinColumn(name = "ITEM_ID")}
+    )
     private List<Item> items;
 
     public Long getPurchaseId() {

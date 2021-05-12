@@ -23,6 +23,11 @@ public class PurchaseService {
     }
 
     public Purchase purchase(Purchase purchase) {
+
+        purchase.getItems().forEach(item -> {
+           purchase.setPurchaseTotal(purchase.getPurchaseTotal() + item.getItemPrice());
+        });
+
         return purchaseRepo.save(purchase);
     }
 
